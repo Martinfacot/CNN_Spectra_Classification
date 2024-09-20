@@ -1,4 +1,4 @@
-# CNN Project for Spectral Classification
+# CNN for NMR Spectra Classification Project
 
 ## Project Description
 This project implements a Convolutional Neural Network (CNN) for the classification of ¹H-NMR spectra specifically focused on metabolic spectra. The CNN is designed to analyze and categorize spectral images, providing an efficient and accurate method for spectra classification.
