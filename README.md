@@ -61,9 +61,7 @@ Example: `your\path\here\models`
 
 ### Important
 - **YAML File:** Place the YAML configuration file in the same directory as your data and model folders for consistent versioning and configuration.
-
----
-   
+ 
 
 ## Dataset
 I am currently working on providing the dataset used for this project. Due to some necessary adjustments and privacy concerns, the dataset is not publicly available at the moment. I aim to make a sample dataset or a processed version available in the near future to aid in understanding and replicating the project results.
