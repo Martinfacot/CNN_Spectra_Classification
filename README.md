@@ -33,6 +33,36 @@ Using YAML files saves time and simplifies code modifications by allowing you to
    -OverviewPage.py
    -SpectraInterface.py
    -symplified_code_to_run_model.py
+
+## Workflow Overview (related to create_your_model)
+
+### Step 1: Set Up Data Folder
+1. **Create a root folder** to store all your data.
+Example: your\path\here\data
+
+2. **For each metabolite**, create a folder named after the metabolite with two subfolders inside:
+
+- valid: To store valid data files.
+- invalid: To store invalid data files.
+
+**Example Structure:**
+- 'your\path\here\data\Glutamine\valid'
+- 'your\path\here\data\Glutamine\invalid'
+
+
+### Step 2: Set Up Models Folder
+1. **Create a root folder** to store all your models.  
+Example: `your\path\here\models`
+
+2. **For each metabolite**, create a folder named after the metabolite to store model files.
+
+**Example Structure:**
+` your\path\here\models\Glutamine'
+
+### Important
+- **YAML File:** Place the YAML configuration file in the same directory as your data and model folders for consistent versioning and configuration.
+
+---
    
 
 ## Dataset
