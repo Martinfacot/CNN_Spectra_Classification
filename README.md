@@ -28,11 +28,9 @@ Using YAML files saves time and simplifies code modifications by allowing you to
 
 2. Old_YAML_&_Model :  if you are curious..
 
-3. Sofware :
-   -main.py --> run the sofware
-   -OverviewPage.py
-   -SpectraInterface.py
-   -symplified_code_to_run_model.py
+3. Sofware : create with Tkinter
+  spectra_analysis_app.py
+update on going
 
 ## Workflow Overview (related to create_your_model)
 
