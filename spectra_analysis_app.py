@@ -183,6 +183,49 @@ class SpectraAnalysisApp:
         
         # Display first metabolite by default
         self.display_metabolite_images(list(self.metabolite_thresholds.keys())[0], content_frame)
+
+    def show_full_screen_image(self, image_path):
+        # Create new window for full-screen image
+        full_screen_window = tk.Toplevel(self.root)
+        full_screen_window.title("Full Screen Image")
+        
+        # Make window full screen
+        full_screen_window.attributes('-fullscreen', True)
+        
+        # Load and display image at full size
+        img = Image.open(image_path)
+        # Calculate scaling to fit screen while maintaining aspect ratio
+        screen_width = full_screen_window.winfo_screenwidth()
+        screen_height = full_screen_window.winfo_screenheight()
+        img_ratio = img.size[0] / img.size[1]
+        screen_ratio = screen_width / screen_height
+        
+        if screen_ratio > img_ratio:
+            height = screen_height
+            width = int(height * img_ratio)
+        else:
+            width = screen_width
+            height = int(width / img_ratio)
+            
+        img = img.resize((width, height), Image.Resampling.LANCZOS)
+        photo = ImageTk.PhotoImage(img)
+        
+        # Create label to display image
+        img_label = ttk.Label(full_screen_window, image=photo)
+        img_label.image = photo  # Keep a reference
+        img_label.pack(expand=True)
+        
+        # Add return button
+        return_btn = ttk.Button(full_screen_window, 
+                              text="Return (Esc)", 
+                              command=full_screen_window.destroy)
+        return_btn.pack(pady=10)
+        
+        # Bind Escape key to close window
+        def close_fullscreen(event=None):
+            full_screen_window.destroy()
+        
+        full_screen_window.bind('<Escape>', close_fullscreen)
         
     def get_probability_color(self, probability, metabolite):
         thresholds = self.metabolite_thresholds[metabolite]
@@ -230,9 +273,14 @@ class SpectraAnalysisApp:
                                  background=color)
             prob_label.pack(anchor=tk.NW)
             
-            img_label = ttk.Label(image_container, image=photo)
+            # Make image clickable
+            img_label = ttk.Label(image_container, image=photo, cursor="hand2")
             img_label.image = photo
             img_label.pack()
+            
+            # Bind click event to show full screen
+            img_label.bind('<Button-1>', 
+                         lambda e, path=image_path: self.show_full_screen_image(path))
             
             # Add checkboxes
             valid_var = tk.BooleanVar()
@@ -265,7 +313,7 @@ class SpectraAnalysisApp:
         # Add save button
         ttk.Button(frame, text=f"Save {metabolite} Classifications",
                   command=lambda m=metabolite: self.save_classifications(m)).grid(
-                      row=row+1, column=0, columnspan=max_cols, pady=10)
+                      row=row+1, column=0, columnspan=max_cols, pady=10)                
                       
     def save_classifications(self, metabolite):
         unclassified = []
@@ -288,12 +336,10 @@ class SpectraAnalysisApp:
             self.saved_classifications = {}
         self.saved_classifications[metabolite] = results
         
+        # Show success message without closing the window
         messagebox.showinfo("Success", f"Classifications saved for {metabolite}")
         
     def show_overview(self):
-        if not hasattr(self, 'saved_classifications'):
-            messagebox.showwarning("Warning", "No classifications have been saved yet")
-            return
             
         # Create new window
         overview_window = tk.Toplevel(self.root)
