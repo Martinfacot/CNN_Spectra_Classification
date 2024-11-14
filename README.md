@@ -30,7 +30,7 @@ Using YAML files saves time and simplifies code modifications by allowing you to
 
 3. Sofware : created with Tkinter 
 --> spectra_analysis_app.py
-update on going
+(update on going)
 
 ## Workflow Overview (related to create_your_model)
 
