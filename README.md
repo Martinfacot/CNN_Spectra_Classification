@@ -68,7 +68,7 @@ This file must be placed in the same directory as the notebook.
 - Example: config_glutamine.yml
 
 ##### Example Directory Structure:
-Copymodels/
+models/
 └── Glutamine/
     ├── create_your_model.ipynb
     └── config_glutamine.yml
