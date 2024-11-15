@@ -24,6 +24,7 @@ Using YAML files saves time and simplifies code modifications by allowing you to
 
 ## Workflow Overview (related to create_your_model)
 
+
 ### Step 1: Set Up Data Folder
 1. **Create a root folder** to store all your data.
 Example: your\path\here\data
@@ -47,9 +48,11 @@ Example: `your\path\here\models`
 **Example Structure:**
 ` your\path\here\models\Glutamine'
 
+
 ### Important Note About Notebook Placement
 The **create_your_model.ipynb** notebook must be placed in the specific metabolite folder within the models directory (e.g., your\path\here\models\Glutamine\create_your_model.ipynb).
 This placement is crucial as the get_metabolite_name() function relies on the folder structure to automatically detect which metabolite you're working with.
+
 
 ##### Example Correct Placement:
 models/
@@ -72,7 +75,7 @@ models/
 └── Glutamine/
     ├── create_your_model.ipynb
     └── config_glutamine.yml
-    
+
 ##### Version Selection:
 In the notebook, you can select which version of the configuration to use by setting the version number:
 
@@ -82,6 +85,8 @@ In the notebook, you can select which version of the configuration to use by set
 3. Raise an error if the specified version doesn't exist in the config file
 
 Make sure your YAML file exists and contains the version number you specify in the notebook, otherwise you'll receive a "Version not found" error.
+
+
 
 ## Dataset
 I am currently working on providing the dataset used for this project. Due to some necessary adjustments and privacy concerns, the dataset is not publicly available at the moment. I aim to make a sample dataset or a processed version available in the near future to aid in understanding and replicating the project results.
