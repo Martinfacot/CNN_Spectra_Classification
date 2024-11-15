@@ -11,26 +11,16 @@ This project implements a Convolutional Neural Network (CNN) for the classificat
 5. Prediction: Ability to classify new spectral data using the trained model.
 
 ## Technologies and Frameworks
-- Python: Primary programming language
+- Python: Primary programming language -> version==3.12.4
 - TensorFlow/Keras: For building and training the CNN model
 - NumPy: For numerical computations and array operations
 - Matplotlib: For data visualization
 - YAML: Used for configuration management
+- Tkinte: sofware developement
 
 Why YAML?
 Using YAML files saves time and simplifies code modifications by allowing you to change configuration settings without altering or rerunning your entire codebase
 
-## Project Structure
-1. CNN :
-   - Alanine_model.ipynb --> main file to run the CNN
-   - config_alanine.yml --> config preprocess parameters and model versions
-   - test_your_saved_model.ipynb --> input your new images you want to test OR use the Sofware
-
-2. Old_YAML_&_Model :  if you are curious..
-
-3. Sofware : created with Tkinter 
---> spectra_analysis_app.py
-(update on going)
 
 ## Workflow Overview (related to create_your_model)
 
@@ -57,9 +47,41 @@ Example: `your\path\here\models`
 **Example Structure:**
 ` your\path\here\models\Glutamine'
 
-### Important
-- **YAML File:** Place the YAML configuration file in the same directory as your data and model folders for consistent versioning and configuration.
- 
+### Important Note About Notebook Placement
+The **create_your_model.ipynb** notebook must be placed in the specific metabolite folder within the models directory (e.g., your\path\here\models\Glutamine\create_your_model.ipynb).
+This placement is crucial as the get_metabolite_name() function relies on the folder structure to automatically detect which metabolite you're working with.
+
+##### Example Correct Placement:
+models/
+└── Glutamine/
+    └── create_your_model.ipynb
+This ensures that the notebook can automatically identify the metabolite name from its location in the folder structure, making the workflow more automated and less prone to errors.
+
+### YAML Configuration File Setup
+Each metabolite folder must contain a YAML configuration file named config_[metabolite].yml (e.g., config_glutamine.yml). 
+This file must be placed in the same directory as the notebook.
+
+#### File Naming Convention:
+
+- The file must be named in lowercase
+- Format: config_[metabolite_name].yml
+- Example: config_glutamine.yml
+
+##### Example Directory Structure:
+Copymodels/
+└── Glutamine/
+    ├── create_your_model.ipynb
+    └── config_glutamine.yml
+    
+##### Version Selection:
+In the notebook, you can select which version of the configuration to use by setting the version number:
+
+**The load_config()** function will:
+1. Automatically look for the YAML file in the same directory
+2. Load the specified version's configuration
+3. Raise an error if the specified version doesn't exist in the config file
+
+Make sure your YAML file exists and contains the version number you specify in the notebook, otherwise you'll receive a "Version not found" error.
 
 ## Dataset
 I am currently working on providing the dataset used for this project. Due to some necessary adjustments and privacy concerns, the dataset is not publicly available at the moment. I aim to make a sample dataset or a processed version available in the near future to aid in understanding and replicating the project results.
