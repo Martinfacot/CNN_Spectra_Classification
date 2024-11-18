@@ -16,7 +16,7 @@ This project implements a Convolutional Neural Network (CNN) for the classificat
 - NumPy: For numerical computations and array operations
 - Matplotlib: For data visualization
 - YAML: Used for configuration management
-- Tkinter: sofware developement
+- Tkinter: software developement
 
 Why YAML?
 Using YAML files saves time and simplifies code modifications by allowing you to change configuration settings without altering or rerunning your entire codebase
