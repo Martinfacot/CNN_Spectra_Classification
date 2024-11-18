@@ -249,6 +249,7 @@ versions:
                       validation_data=(X_val_tensor, Y_val_tensor),
                       callbacks=[early_stopping],
                       verbose=1)
+
   5: # new version based on MRI Brain Tumor Detection : add f1 score -> early stopping
     preprocess:
       coords: [70, 108]
