@@ -107,22 +107,26 @@ The dataset images were created using the following source:
    
    ```bash
    git clone https://github.com/Martinfacot/CNN_Spectra_Classification/tree/main/Test_the_project.git
+   ```bash
 
 3. Navigate to the project directory:
    
  ```bash
 cd CNN_Spectra_Classification
+```bash
 
 3. Create and activate a virtual environment (optional but recommended):
 
  ```bash
 python3.12 -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+```bash
 
 4. Install the required Python packages:
 
  ```bash
 pip3 install -r requirements.txt
+ ```bash
 
 5. Unzip the image folders and ensure the following directory structure:
 your/path/here/Test_the_project/data/ECG/normal/
