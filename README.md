@@ -129,11 +129,11 @@ pip3 install -r requirements.txt
  ```
 
 5. Unzip the image folders and ensure the following directory structure:
-your/path/here/Test_the_project/data/ECG/normal/
-your/path/here/Test_the_project/data/ECG/abnormal/
+'your/path/here/Test_the_project/data/ECG/normal/'
+'your/path/here/Test_the_project/data/ECG/abnormal/'
 
 6.Open and run the Jupyter Notebook located at:
-your/path/here/Test_the_project/models/ECG/create_your_model_ECG.ipynb
+'your/path/here/Test_the_project/models/ECG/create_your_model_ECG.ipynb'
 
 ### Troubleshooting
 
