@@ -10,7 +10,7 @@ The primary motivation behind this project is to create an automatic classificat
 3. CNN Model: Implementation of a custom CNN architecture for spectra classification.
 4. Training Pipeline: A robust training process with validation and performance metrics.
 5. Prediction: Ability to classify new spectral data using the trained model.
-6. Software
+6. Software (in developement)
 
 ## Technologies and Frameworks
 - Python: Primary programming language -> version==3.12.4
@@ -79,12 +79,20 @@ Make sure your YAML file exists and contains the version number you specify in t
 
 
 ## Dataset
-I am currently working on providing the dataset used for this project. Due to some necessary adjustments and privacy concerns, the dataset is not publicly available at the moment. I aim to make a sample dataset or a processed version available in the near future to aid in understanding and replicating the project results.
 
-For any questions or if you need more information about the data used, please feel free to open an issue in this repository.
+Due to confidentiality constraints, I create a custom-generated dataset of ECG spectral images that mimic the structural characteristics of the original NMR spectra.
 
+### Dataset Characteristics
+Image Type: ECG spectral images
+Purpose: Simulate NMR spectra classification workflow
 
-## How the Software Works
+The dataset images were created using the following source:
+- Original Dataset: [Heartbeat Dataset](https://www.kaggle.com/datasets/shayanfazeli/heartbeat/data)
+- Data Conversion Script: `dataset_cvs_to_png.py`
+
+[View Dataset Folder](./data)
+
+## How the Software Works (in developement)
 The software implements a comprehensive workflow for metabolite spectra classification:
 
 ### Data Preparation
