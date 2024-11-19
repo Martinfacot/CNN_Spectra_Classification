@@ -1,6 +1,6 @@
 absl-py==2.1.0
 asttokens==2.4.1
-beautifulsoup4==4.12.3  # Removed 'bs4'
+beautifulsoup4==4.12.3  
 certifi==2024.7.4
 cffi==1.17.0
 charset-normalizer==3.3.2
@@ -13,7 +13,7 @@ et-xmlfile==1.1.0
 executing==2.0.1
 flatbuffers==24.3.25
 fonttools==4.53.1
-grpcio==1.65.0  # Indirectly required by TensorFlow
+grpcio==1.65.0  
 h5py==3.11.0
 idna==3.7
 imbalanced-learn==0.12.3
