@@ -99,6 +99,41 @@ The dataset images were created using the following source:
 
 [View Dataset Folder](./data)
 
+## Testing the Project
+
+### Setup and Installation
+
+1. Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/Martinfacot/CNN_Spectra_Classification/tree/main/Test_the_project.git
+
+2. Navigate to the project directory:
+ ```bash
+cd CNN_Spectra_Classification
+
+3. Create and activate a virtual environment (optional but recommended):
+ ```bash
+python3.12 -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+
+4. Install the required Python packages:
+ ```bash
+pip3 install -r requirements.txt
+
+5. Unzip the image folders and ensure the following directory structure:
+your/path/here/Test_the_project/data/ECG/normal/
+your/path/here/Test_the_project/data/ECG/abnormal/
+
+6.Open and run the Jupyter Notebook located at:
+your/path/here/Test_the_project/models/ECG/create_your_model_ECG.ipynb
+
+### Troubleshooting
+
+- Ensure all dependencies are correctly installed
+- Verify the exact Python version (3.12)
+- Check that image folders are correctly unzipped and placed in the specified directories
+
+
 ## How the Software Works (in developement)
 The software implements a comprehensive workflow for metabolite spectra classification:
 
