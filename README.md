@@ -78,10 +78,10 @@ Each metabolite folder requires a YAML configuration file that is dynamically na
 
 
 **Example Correct Placement:**
-`models/
-└── Glutamine/
-    └── create_your_model.ipynb
-    └── config_[metabolite_name].yml`
+`Test_the_project/models/
+                     └── Glutamine/
+                            └── create_your_model.ipynb
+                            └── config_[metabolite_name].yml`
     
 This ensures that the notebook can automatically identify the metabolite name from its location in the folder structure, making the workflow more automated and less prone to errors.
 
