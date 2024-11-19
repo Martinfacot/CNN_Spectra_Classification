@@ -57,7 +57,7 @@ This placement is crucial as the get_metabolite_name() function relies on the fo
 Each metabolite folder requires a YAML configuration file that is dynamically named to match the metabolite directory.
 
 
-##### Example Correct Placement:
+**Example Correct Placement:**
 models/
 └── Glutamine/
     └── create_your_model.ipynb
