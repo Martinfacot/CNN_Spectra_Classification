@@ -49,7 +49,7 @@ Using YAML files saves time and simplifies code modifications by allowing you to
 
 ### Step 1: Set Up Data Folder
 1. **Create a root folder** to store all your data.
-Example: your\path\here\data
+Example: `your\path\here\data`
 
 2. **For each metabolite**, create a folder named after the metabolite with two subfolders inside:
 
@@ -57,8 +57,8 @@ Example: your\path\here\data
 - invalid: To store invalid data files.
 
 **Example Structure:**
-- 'your\path\here\data\Glutamine\valid'
-- 'your\path\here\data\Glutamine\invalid'
+- `your\path\here\data\Glutamine\valid`
+- `your\path\here\data\Glutamine\invalid`
 
 
 ### Step 2: Set Up Models Folder
@@ -68,7 +68,7 @@ Example: `your\path\here\models`
 2. **For each metabolite**, create a folder named after the metabolite to store model files.
 
 **Example Structure:**
-` your\path\here\models\Glutamine'
+`your\path\here\models\Glutamine`
 
 
 ### Important Note About Notebook & YAML file Placement 
@@ -78,10 +78,10 @@ Each metabolite folder requires a YAML configuration file that is dynamically na
 
 
 **Example Correct Placement:**
-models/
+`models/
 └── Glutamine/
     └── create_your_model.ipynb
-    └── config_[metabolite_name].yml
+    └── config_[metabolite_name].yml`
     
 This ensures that the notebook can automatically identify the metabolite name from its location in the folder structure, making the workflow more automated and less prone to errors.
 
@@ -95,7 +95,7 @@ In the notebook, you can select which version of the configuration to use by set
 2. Load the specified version's configuration
 3. Raise an error if the specified version doesn't exist in the config file
 
-Make sure your YAML file exists and contains the version number you specify in the notebook, otherwise you'll receive a "Version not found" error.
+Make sure your YAML file exists and contains the version number you specify in the notebook, otherwise you'll receive a `Version not found` error.
 
 
 ## Dataset
@@ -149,11 +149,11 @@ pip3 install -r requirements.txt
  ```
 
 5. Unzip the image folders and ensure the following directory structure:
-- 'your/path/here/Test_the_project/data/ECG/normal/'
-- 'your/path/here/Test_the_project/data/ECG/abnormal/'
+- `your/path/here/Test_the_project/data/ECG/normal/`
+- `your/path/here/Test_the_project/data/ECG/abnormal/`
 
 6. Open and run the Jupyter Notebook located at:
-- 'your/path/here/Test_the_project/models/ECG/create_your_model_ECG.ipynb'
+- `your/path/here/Test_the_project/models/ECG/create_your_model_ECG.ipynb`
 
 ### Troubleshooting
 
