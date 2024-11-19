@@ -97,7 +97,7 @@ The dataset images were created using the following source:
 - Original Dataset: [Heartbeat Dataset](https://www.kaggle.com/datasets/shayanfazeli/heartbeat/data)
 - Data Conversion Script: `dataset_csv_to_png.py`
 
-[View Dataset Folder](./data)
+[View Dataset Folder](https://github.com/Martinfacot/CNN_Spectra_Classification/tree/main/Test_the_project/data)
 
 ## Testing the Project
 
