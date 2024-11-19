@@ -104,12 +104,12 @@ The dataset images were created using the following source:
 ### Setup and Installation
 
 1. Clone this repository to your local machine:
-2. 
+   
    ```bash
    git clone https://github.com/Martinfacot/CNN_Spectra_Classification/tree/main/Test_the_project.git
 
 3. Navigate to the project directory:
-4. 
+   
  ```bash
 cd CNN_Spectra_Classification
 
