@@ -88,7 +88,7 @@ Purpose: Simulate NMR spectra classification workflow
 
 The dataset images were created using the following source:
 - Original Dataset: [Heartbeat Dataset](https://www.kaggle.com/datasets/shayanfazeli/heartbeat/data)
-- Data Conversion Script: `dataset_cvs_to_png.py`
+- Data Conversion Script: `dataset_csv_to_png.py`
 
 [View Dataset Folder](./data)
 
