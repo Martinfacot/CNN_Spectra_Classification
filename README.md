@@ -86,6 +86,13 @@ Due to confidentiality constraints, I create a custom-generated dataset of ECG s
 Image Type: ECG spectral images
 Purpose: Simulate NMR spectra classification workflow
 
+### Dataset Selection
+The original Heartbeat Dataset contains approximately 100,000 ECG recordings. For this project, I randomly selected:
+- 1,000 Normal ECG images
+- 1,000 Abnormal ECG images
+
+This balanced subset provides a representative sample for developing and testing the classification model while maintaining computational efficiency.
+
 The dataset images were created using the following source:
 - Original Dataset: [Heartbeat Dataset](https://www.kaggle.com/datasets/shayanfazeli/heartbeat/data)
 - Data Conversion Script: `dataset_csv_to_png.py`
