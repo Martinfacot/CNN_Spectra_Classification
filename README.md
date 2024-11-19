@@ -1,5 +1,25 @@
 # CNN for NMR Spectra Classification Project
 
+## Table of Contents
+
+1. [Project Description](#project-description)
+2. [Main Features](#main-features)
+3. [Technologies and Frameworks](#technologies-and-frameworks)
+4. [Workflow Overview](#workflow-overview-related-to-create_your_model)
+   - [Step 1: Set Up Data Folder](#step-1-set-up-data-folder)
+   - [Step 2: Set Up Models Folder](#step-2-set-up-models-folder)
+   - [Important Note About Notebook & YAML file Placement](#important-note-about-notebook--yaml-file-placement)
+5. [Dataset](#dataset)
+   - [Dataset Characteristics](#dataset-characteristics)
+   - [Dataset Selection](#dataset-selection)
+6. [Testing the Project](#testing-the-project)
+   - [Setup and Installation](#setup-and-installation)
+   - [Troubleshooting](#troubleshooting)
+7. [How the Software Works](#how-the-software-works-in-developement)
+   - [Data Preparation](#data-preparation)
+   - [Image Processing and Classification](#image-processing-and-classification)
+   - [User Interface Features](#user-interface-features)
+
 ## Project Description
 This project implements a Convolutional Neural Network (CNN) for the classification of ¹H-NMR spectra specifically focused on metabolic spectra. The CNN is designed to analyze and categorize spectral images, providing an efficient and accurate method for spectra classification.
 The primary motivation behind this project is to create an automatic classification of spectra in order to reduce human error and subjective interpretation in the analysis of metabolite images.
