@@ -1,5 +1,7 @@
 # CNN for NMR Spectra Classification Project
 
+![CNN architeture](https://github.com/Martinfacot/CNN_Spectra_Classification/blob/main/images/Global%20Architecture%20of%20the%20CNN.png)
+
 ## Table of Contents
 
 1. [Project Description](#project-description)
