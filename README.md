@@ -15,7 +15,8 @@
 6. [Testing the Project](#testing-the-project)
    - [Setup and Installation](#setup-and-installation)
    - [Troubleshooting](#troubleshooting)
-7. [How the Software Works](#how-the-software-works-in-developement)
+7. [Results](#results)
+8. [How the Software Works](#how-the-software-works-in-developement)
    - [Data Preparation](#data-preparation)
    - [Image Processing and Classification](#image-processing-and-classification)
    - [User Interface Features](#user-interface-features)
@@ -161,6 +162,20 @@ pip3 install -r requirements.txt
 - Verify the exact Python version (3.12)
 - Check that image folders are correctly unzipped and placed in the specified directories
 
+
+## Results
+
+If you want to explore the model performance without retraining, you can examine the detailed results in the following Excel files:
+
+1. **Alanine Model Results** 
+  - Example of a simple metabolite classification
+  - [View Alanine Results](https://github.com/Martinfacot/CNN_Spectra_Classification/blob/main/models_results_Alanine.xlsx)
+
+2. **ECG Model Results**
+  - Results from the test project using ECG data
+  - [View ECG Results](https://github.com/Martinfacot/CNN_Spectra_Classification/blob/main/Test_the_project/models/ECG/models_results_ECG.xlsx)
+
+These files contain comprehensive metrics and performance evaluations for their respective models.
 
 ## How the Software Works (in developement)
 The software implements a comprehensive workflow for metabolite spectra classification:
