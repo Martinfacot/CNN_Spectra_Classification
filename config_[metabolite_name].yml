@@ -1,0 +1,510 @@
+versions:
+  1: # original model
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(256, activation='relu'),
+            tf.keras.layers.Dropout(0.3),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=25,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      verbose=1)
+
+  1.5: # number of epochs 25-->50
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(256, activation='relu'),
+            tf.keras.layers.Dropout(0.3),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=50,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      verbose=1)
+
+  2: # early stopping & increase the number of epochs
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(256, activation='relu'),
+            tf.keras.layers.Dropout(0.3),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+     
+      early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=5,
+        restore_best_weights=True)
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=60,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      callbacks=[early_stopping],
+                      verbose=1)
+
+  2.5: #  resize shape (320 --> 256)
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [256, 256]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(256, activation='relu'),
+            tf.keras.layers.Dropout(0.3),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+     
+      early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=10,
+        restore_best_weights=True)
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=70,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      callbacks=[early_stopping],
+                      verbose=1)
+
+  3: # L2
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(16, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(256, activation='relu',  kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+            tf.keras.layers.Dropout(0.3),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+     
+      early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=5,
+        restore_best_weights=True)
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=60,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      callbacks=[early_stopping],
+                      verbose=1)
+
+  4: # L2 x2 network capacity
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(512, activation='relu',  kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+            tf.keras.layers.Dropout(0.3),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+     
+      early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=5,
+        restore_best_weights=True)
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=60,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      callbacks=[early_stopping],
+                      verbose=1)
+                      
+  5: # new version based on MRI Brain Tumor Detection : add f1 score -> early stopping
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+          tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+          
+          tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+          tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+          
+          tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'),
+          tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+          
+          tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+          tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+          
+          tf.keras.layers.Flatten(),
+          
+          tf.keras.layers.Dense(512, activation='relu'),
+          tf.keras.layers.Dropout(0.5),
+          
+          tf.keras.layers.Dense(1, activation='sigmoid')
+      ])
+
+      # Compile with F1 score metric
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+
+      # Modified early stopping to monitor val_f1_score
+      early_stopping = tf.keras.callbacks.EarlyStopping(
+          monitor='val_f1_score',
+          mode='max',
+          patience=10,
+          verbose=1,
+          start_from_epoch=3,
+          restore_best_weights=True
+      )
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                epochs=50,
+                validation_data=(X_val_tensor, Y_val_tensor),
+                callbacks=[early_stopping],
+                verbose=1)
+
+  6: # increased network capacity x2
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(512, activation='relu'),
+            tf.keras.layers.Dropout(0.5),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+
+      early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=10,
+        restore_best_weights=True)
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=70,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      callbacks=[early_stopping],
+                      verbose=1)
+
+  7: # add fully connected layer 
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(512, activation='relu'),
+            tf.keras.layers.Dropout(0.5),
+
+            tf.keras.layers.Dense(256, activation='relu'),
+            tf.keras.layers.Dropout(0.3),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+
+      early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=10,
+        restore_best_weights=True)
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=70,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      callbacks=[early_stopping],
+                      verbose=1)                     
+
+  10: # softmax
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [256, 256]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(512, activation='relu'),
+            tf.keras.layers.Dropout(0.5),
+
+            tf.keras.layers.Dense(2, activation='softmax')])
+
+      model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+                loss=tf.keras.losses.CategoricalCrossentropy(),
+                metrics=['accuracy'])
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=50,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      verbose=1)
+
+  11: # dog and cat
+    preprocess:
+      resize_shape: [256, 256]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(512, activation='relu'),
+            tf.keras.layers.Dropout(0.5),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+                loss='binary_crossentropy',
+                metrics=['accuracy'])
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=50,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      verbose=1)
+
+  12: # add fully connected layer 
+    preprocess:
+      coords: [70, 108]
+      crop_size: [465, 605]
+      resize_shape: [320, 320]
+    code: |
+      model = tf.keras.Sequential([
+
+            tf.keras.layers.Input(shape=[X_train_tensor.shape[1], X_train_tensor.shape[2], X_train_tensor.shape[3]]),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Conv2D(32, kernel_size=(3, 3), strides=1, activation='relu'),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+            tf.keras.layers.Flatten(),
+
+            tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+            tf.keras.layers.Dropout(0.5),
+
+            tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+            tf.keras.layers.Dropout(0.3),
+
+            tf.keras.layers.Dense(1, activation='sigmoid')])
+
+      model.compile(
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+          loss='binary_crossentropy',
+          metrics=['accuracy', F1Score()]
+      )
+     
+      early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=5,
+        restore_best_weights=True)
+
+    training: |
+      history = model.fit(X_train_tensor, Y_train_tensor,
+                      epochs=60,
+                      validation_data=(X_val_tensor, Y_val_tensor),
+                      callbacks=[early_stopping],
+                      verbose=1)
+
