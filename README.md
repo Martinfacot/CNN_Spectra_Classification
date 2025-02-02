@@ -177,8 +177,8 @@ If you want to explore the model performance without retraining, you can examine
 
 These files contain comprehensive metrics and performance evaluations for their respective models.
 
-## How the Software Works (in developement)
-The software implements a comprehensive workflow for metabolite spectra classification:
+## How the Software Works
+The software implements a comprehensive workflow for metabolite spectra classification (the final version cannot be provided due to confidentiality policies):
 
 ### Data Preparation
 - Users select a patient folder containing metabolite spectra images
